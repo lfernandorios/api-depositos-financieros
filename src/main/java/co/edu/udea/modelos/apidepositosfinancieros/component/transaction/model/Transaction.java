@@ -35,4 +35,12 @@ public class Transaction {
 
     @Column(name = "amount")
     private Long amount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state_transaction")
+    private StateTransaction stateTransaction;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "cause_transaction")
+    private CauseTransaction causeTransaction;
 }
