@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "c9e77c17-0621-4222-8e38-392d9d33511d",
+		"name": "depositosTransaction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8199569"
+	},
+	"item": [
+		{
+			"name": "Save Transaction",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"ACCOUNT\", Math.floor(Math.random() * (18 - 1 + 1) + 1));\r",
+							"pm.environment.set(\"AMOUNT\", Math.floor(Math.random() * (388000 - 2 + 1) + 2));\r",
+							"\r",
+							"var Tipos = [\"RETIRO\", \"DEPOSITO\", \"RETIRO\"];\r",
+							"\r",
+							"pm.environment.set('Tipos',Tipos);\r",
+							"\r",
+							"pm.environment.set(\"TIPO\", Tipos[Math.floor(Math.random() * Tipos.length)]);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountId\" : {{ACCOUNT}},\r\n    \"typeTransaction\": \"{{TIPO}}\", \r\n    \"amount\": {{AMOUNT}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

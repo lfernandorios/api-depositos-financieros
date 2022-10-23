@@ -64,6 +64,12 @@ public class TransactionServiceImpl implements TransactionService{
             return result;
         }
 
+        if (command.getAmount() == 0){
+            result.put("State",StateTransaction.FALLIDA.toString());
+            result.put("Cause", CauseTransaction.MONTO_CERO.toString());
+            return result;
+        }
+
         if (command.getTypeTransaction() == TypeTransaction.RETIRO) {
             if (account.getSaldo() - command.getAmount() < 0){
                 result.put("State",StateTransaction.FALLIDA.toString());
