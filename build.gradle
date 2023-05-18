@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.7.2'
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
+    id 'jacoco'
+    id 'info.solidsoft.pitest' version '1.7.4'
 }
 
 group = 'co.edu.udea.modelos'
@@ -17,11 +19,31 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation(platform('org.junit:junit-bom:5.9.2'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
     implementation 'com.google.code.gson:gson:2.9.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
 }
 
-tasks.named('test') {
+pitest {
+    targetClasses = ['co.edu.udea.*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+    exportLineCoverage = true
+    junit5PluginVersion = '0.15'
+    failWhenNoMutations = false
+    excludedClasses = ['co.edu.udea.modelos.apidepositosfinanciero.ApiDepositosFinancierosApplication*']
+    excludedTestClasses = ['*ApiDepositosFinancierosApplicationTest']
+    mutators = ['ALL']
+
+}
+
+test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }

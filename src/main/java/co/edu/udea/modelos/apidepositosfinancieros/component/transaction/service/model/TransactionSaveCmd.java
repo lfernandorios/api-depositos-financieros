@@ -1,8 +1,5 @@
 package co.edu.udea.modelos.apidepositosfinancieros.component.transaction.service.model;
 
-
-import co.edu.udea.modelos.apidepositosfinancieros.component.transaction.model.CauseTransaction;
-import co.edu.udea.modelos.apidepositosfinancieros.component.transaction.model.StateTransaction;
 import co.edu.udea.modelos.apidepositosfinancieros.component.transaction.model.Transaction;
 import co.edu.udea.modelos.apidepositosfinancieros.component.transaction.model.TypeTransaction;
 import lombok.Builder;

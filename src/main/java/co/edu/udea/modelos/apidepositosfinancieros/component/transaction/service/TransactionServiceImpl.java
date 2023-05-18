@@ -43,7 +43,7 @@ public class TransactionServiceImpl implements TransactionService{
 
 
 
-    private Map <String, String> updateSaldo(Account account, TransactionSaveCmd command){
+    public Map <String, String> updateSaldo(Account account, TransactionSaveCmd command){
 
         Map<String, String> result = new HashMap <>();
 
