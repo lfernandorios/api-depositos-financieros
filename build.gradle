@@ -35,7 +35,7 @@ pitest {
     exportLineCoverage = true
     junit5PluginVersion = '0.15'
     failWhenNoMutations = false
-    excludedClasses = ['co.edu.udea.modelos.apidepositosfinanciero.ApiDepositosFinancierosApplication*']
+    excludedClasses = ['*model.*','*.ApiDepositosFinancierosApplication']
     excludedTestClasses = ['*ApiDepositosFinancierosApplicationTest']
     mutators = ['ALL']
 
